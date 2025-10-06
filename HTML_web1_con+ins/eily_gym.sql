@@ -1,5 +1,13 @@
 CREATE DATABASE IF NOT EXISTS eily_gym;
 USE eily_gym;
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1:3306
+-- Généré le : lun. 06 oct. 2025 à 11:49
+-- Version du serveur : 9.1.0
+-- Version de PHP : 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -48,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -66,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `order_details` (
   PRIMARY KEY (`id`),
   KEY `order_id` (`order_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -83,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `img_url` text,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -100,18 +108,16 @@ CREATE TABLE IF NOT EXISTS `user` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `created_at`) VALUES
-(5, '', '', '$2y$10$OIE4WGleo0LIOgmxDGtqju5mzRaQ/TOZTgkIyvtL35N8UZ0zJ21.y', '2025-10-04 22:05:31'),
-(4, 'test', 'test@gmail.com', '$2y$10$DQWVKNljJMziILF/Ttp4neKc5WXvWmubTIiTJnmcPsBMyT4VAuhJS', '2025-10-04 14:05:34'),
-(3, 'te', 'te', '$2y$10$.tnIrfbmfNU1irpUQsd9XeVkeG05bEfPcGIFpSJQqiX5QFUAIIu3e', '2025-10-04 14:03:05'),
-(6, 'test2', 'test2', '$2y$10$ecCoEyXxu5uRpBA0ZG516.DquJ6.qGAPi4/8qIMU6aYoEzjkVkN2W', '2025-10-04 23:14:50'),
-(7, 'test2\"', 'test2\"', '$2y$10$b398JM7VPpx3CW.LK0YKk.0dY/xc9gsDPKRF5qaZ/D3eHAjlwA7Q2', '2025-10-04 23:15:51');
+(10, 'jinny', 'jinny@gmail.com', '$2y$10$90oT4c/nxRlcB/Rphv.8gums2UDp0ndxVqyMTkeojlXSLiBBmQt4S', '2025-10-06 11:43:07'),
+(9, 'jli', 'jinny1@gmail.com', '$2y$10$1HBYyl4dzUf/0ZnSGrCDTetPD5SYEyoJK/elb38mQROfPuO2cPGe6', '2025-10-06 11:29:57'),
+(8, 'test', '', '$2y$10$pZvMugLfdRI4z/jOfjyKZexrF1fRL0xlON18gsoUF4Mde0AFWCd.y', '2025-10-06 00:14:43');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
