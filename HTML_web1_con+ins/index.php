@@ -9,42 +9,46 @@
 <body>
 
   <header>
-    <div class="logo">Eily Gym</div>
-    <nav id="nav">
-      <ul>
-        <nav id="nav">
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
+    <div class="logo">Eily GYM</div>
+      <nav id="nav">
+        <ul>
+          <nav id="nav">
+        <ul>
+        <li><a href="#accueil">Accueil</a></li>
+
         <li class="dropdown">
-
-        <a href="./">Produits</a>
-      <ul class="submenu">
-        <li><a href="./produits_homme.php">Homme</a></li>
-        <li><a href="./produits_femme.php">Femme</a></li>
-      </ul>
-
-        <li><a href="#about">À propos</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="./login.php">connection</a></li>
-        <li><a href="./register.php">Inscription</a></li>
-
-
-</ul>
-
+          <a href="./">Produits</a>
+          <ul class="submenu">
+            <li><a href="./produits_homme.php">Homme</a></li>
+            <li><a href="./produits_femme.php">Femme</a></li>
+          </ul>
+        </li>
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
         </nav>
       </ul>
     </nav>
-    <div class="burger" id="burger">&#9776;</div>
+
+      <li class="dropdown">
+        <a href="./">&#128100</a>
+        <ul class="submenu">
+          <li><a href="./login.php">connexion</a></li>
+          <li><a href="./register.php">Inscription</a></li>
+        </ul>
+      </li>
+      <ul class="burger" id="burger"></ul>
+
   </header>
 
   <section class="hero" id="home">
     <h1>Reste fort! Reste stylé!</h1>
     <p>Découvre les nouvelles collections de vêtements de sport de la marque Eily Gym.</p>
-    <a href="#products" class="cta-btn">Voir les produits</a>
+    <a href="#products" class="cta-btn">Voir les nouveautés</a>
   </section>
 
   <section class="products" id="products">
-    <h2>Nos produits</h2>
+    <h2>Les Nouveautés</h2>
     <div class="products-grid" id="products-grid">
       <!-- Les produits seront injectés ici par JavaScript -->
     </div>

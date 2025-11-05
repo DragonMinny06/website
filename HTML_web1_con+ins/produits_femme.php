@@ -7,19 +7,16 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-<?php include 'header.php'; ?>
-
 <main>
   <section class="product-section">
     <h2>Produits Femme</h2>
     <div class="product-grid">
       <?php
         $products_femme = [
-          ["nom" => "Leggings Femme Élite", "prix" => "55€", "image" => "femme_leggings.jpg"],
-          ["nom" => "Brassière Sport", "prix" => "40€", "image" => "femme_brassiere.jpg"],
-          ["nom" => "Débardeur Femme", "prix" => "35€", "image" => "femme_debardeur.jpg"],
-          ["nom" => "Sac Femme Fitness", "prix" => "45€", "image" => "femme_sac.jpg"]
+          ["nom" => "Leggings Femme Élite", "prix" => "55€", "image" => "legging_f.png"],
+          ["nom" => "Brassière Femme", "prix" => "35€", "image" => "brassiere_f.png"],
+          ["nom" => "t-shirt Femme", "prix" => "45€", "image" => "t-shirt_f.png"],
+          ["nom" => "debardeur Femme", "prix" => "40€", "image" => "debardeur_f.png"]
         ];
         foreach ($products_femme as $product) {
           echo '<div class="product-card">';
@@ -37,8 +34,6 @@
     </div>
   </section>
 </main>
-
-<?php include 'footer.php'; ?>
 
 <script src="script.js"></script>
 </body>

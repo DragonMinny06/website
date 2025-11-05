@@ -7,20 +7,19 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-<?php include 'header.php'; ?>
-
 <main>
   <section class="product-section">
     <h2>Produits Homme</h2>
     <div class="product-grid">
       <?php
         $products_homme = [
-          ["nom" => "T-shirt Homme Performance", "prix" => "40€", "image" => "homme_tshirt.jpg"],
-          ["nom" => "Short Homme Confort", "prix" => "35€", "image" => "homme_short.jpg"],
-          ["nom" => "Chaussures Homme Training", "prix" => "80€", "image" => "homme_chaussures.jpg"],
-          ["nom" => "Casquette Homme", "prix" => "20€", "image" => "homme_casquette.jpg"]
+          ["nom" => "T-shirt Homme Performance", "prix" => "40€", "image" => "t-shirt_h.png"],
+          ["nom" => "Short Homme Confort flexible", "prix" => "35€", "image" => "short_h.png"],
+          ["nom" => "Survetêment Homme", "prix" => "80€", "image" => "survet_h.png"],
+          ["nom" => "Débardeur Capuche Homme", "prix" => "20€", "image" => "capuche_h.png"]
         ];
+
+
         foreach ($products_homme as $product) {
           echo '<div class="product-card">';
           echo '<img src="images/' . $product["image"] . '" alt="' . $product["nom"] . '">';
@@ -37,9 +36,6 @@
     </div>
   </section>
 </main>
-
-<?php include 'footer.php'; ?>
-
 <script src="script.js"></script>
 </body>
 </html>
