@@ -15,9 +15,16 @@ if (empty($cart)) {
 $stmt = $pdo->prepare("INSERT INTO orders (user_id, date, status) VALUES (?, NOW(), 'pending')");
 $stmt->execute([$_SESSION['user']['id']]);
 $orderId = $pdo->lastInsertId();
-foreach($cart as $product_id => $quantity){
-    $stmt = $pdo->prepare("INSERT INTO order_items (order_id, product_id, quantite) VALUES (?, ?, ?)");
-    $stmt->execute([$orderId, $product_id, $quantity]);
+
+foreach($cart as $item){
+    // Trouver l'id produit depuis le nom
+    $stmt = $pdo->prepare("SELECT id FROM products WHERE nom = ?");
+    $stmt->execute([$item['nom']]);
+    $product = $stmt->fetch();
+    if ($product) {
+        $stmt2 = $pdo->prepare("INSERT INTO order_items (order_id, product_id, quantite) VALUES (?, ?, ?)");
+        $stmt2->execute([$orderId, $product['id'], $item['quantite']]);
+    }
 }
 $_SESSION['cart'] = [];
 echo "Commande passée !";

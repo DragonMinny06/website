@@ -21,8 +21,13 @@
         </li>
         <li><a href="cart.php">Mon panier</a></li>
         <li><a href="#about">À propos</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <?php
+        <li><a herf="#contact"> Contact</a></li>
+      </section>
+
+      <li class="dropdown">
+        <a href="./">&#128100</a>
+        <ul class="submenu">
+          <?php
         session_start();
         if (isset($_SESSION['user'])) {
           echo '<li>Connecté : <b>' . htmlspecialchars($_SESSION['user']['username']) . '</b></li>';
@@ -34,12 +39,6 @@
           echo '<li><a href="register.php">Inscription</a></li>';
         }
         ?>
-
-      <li class="dropdown">
-        <a href="./">&#128100</a>
-        <ul class="submenu">
-          <li><a href="./login.php">connexion</a></li>
-          <li><a href="./register.php">Inscription</a></li>
         </ul>
       </li>
       <ul class="burger" id="burger"></ul>
@@ -75,6 +74,23 @@
     <h2>Les Nouveautés</h2>
     <div class="products-grid" id="products-grid">
       <!-- Les produits seront injectés ici par JavaScript -->
+    <?php
+      require_once 'f_db.php';
+      // On suppose que "nouveauté" = les 4 produits les plus récents
+      $products = $pdo->query("SELECT * FROM products ORDER BY id DESC LIMIT 4")->fetchAll();
+      foreach ($products as $product):
+    ?>
+      <div class="product-card">
+        <img src="images/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['nom']) ?>">
+        <h3><?= htmlspecialchars($product['nom']) ?></h3>
+        <p class="price"><?= htmlspecialchars($product['prix']) ?>€</p>
+        <form method="POST" action="panier_action.php">
+          <input type="hidden" name="nom" value="<?= htmlspecialchars($product['nom']) ?>">
+          <input type="hidden" name="prix" value="<?= htmlspecialchars($product['prix']) ?>">
+          <button type="submit">Ajouter au panier</button>
+        </form>
+      </div>
+    <?php endforeach; ?>
     </div>
   </section>
 
@@ -87,6 +103,23 @@
 
   <section class="contact" id="contact">
     <h2>Contact</h2>
+    
+      <?php
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_send'])) {
+          require_once 'f_db.php';
+          $nom = $_POST['contact_nom'];
+          $email = $_POST['contact_email'];
+          $message = $_POST['contact_message'];
+          if ($nom && $email && $message) {
+            $stmt = $pdo->prepare("INSERT INTO contact_messages (nom, email, message) VALUES (?, ?, ?)");
+            $stmt->execute([$nom, $email, $message]);
+              echo "<p>Message envoyé !</p>";
+          } else {
+              echo "<p>Veuillez remplir tous les champs.</p>";
+          }
+        }
+      ?>
+
     <form>
       <input type="text" placeholder="Votre nom" required>
       <input type="email" placeholder="Votre email" required>

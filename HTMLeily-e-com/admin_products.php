@@ -11,8 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_product'])) {
     $nom = $_POST['nom'];
     $prix = $_POST['prix'];
     $image = $_POST['image'];
-    $stmt = $pdo->prepare("INSERT INTO products (nom, prix, image) VALUES (?, ?, ?)");
-    $stmt->execute([$nom, $prix, $image]);
+    $description = $_POST['description'];
+    $stmt = $pdo->prepare("INSERT INTO products (nom, prix, image, description) VALUES (?, ?, ?, ?)");
+    $stmt->execute([$nom, $prix, $image, $description]);
 }
 
 // Supprimer un produit
@@ -36,12 +37,13 @@ $products = $pdo->query("SELECT * FROM products")->fetchAll();
         <input name="nom" required placeholder="Nom">
         <input name="prix" required type="number" min="0" step="0.01" placeholder="Prix">
         <input name="image" placeholder="URL image">
+        <input name="description" placeholder="Description">
         <button type="submit" name="add_product">Ajouter</button>
     </form>
     <ul>
     <?php foreach($products as $p): ?>
         <li>
-            <?= htmlspecialchars($p['nom']) ?> - <?= htmlspecialchars($p['prix']) ?>€
+            <?= htmlspecialchars($p['nom']) ?> - <?= htmlspecialchars($p['prix']) ?>€ <?= htmlspecialchars($p['description']) ?>
             <a href="?delete=<?= $p['id'] ?>" onclick="return confirm('Supprimer ?')">Supprimer</a>
         </li>
     <?php endforeach; ?>
