@@ -1,8 +1,8 @@
 <?php
 $db_host = 'localhost';
 $db_name = 'eily_gym';
-$db_user = 'root'; // adapte à ton UwAmp, souvent root et soit root soit '' (vide)
-$db_pass = ''; // ou '' selon config UwAmp
+$db_user = 'root'; 
+$db_pass = ''; 
 
 $dsn = "mysql:host=$db_host;dbname=$db_name;charset=utf8";
 $options = array(

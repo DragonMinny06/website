@@ -6,7 +6,6 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     exit();
 }
 
-// Ajouter un produit
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_product'])) {
     $nom = $_POST['nom'];
     $prix = $_POST['prix'];
@@ -16,14 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_product'])) {
     $stmt->execute([$nom, $prix, $image, $description]);
 }
 
-// Supprimer un produit
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
     $stmt = $pdo->prepare("DELETE FROM products WHERE id = ?");
     $stmt->execute([$id]);
 }
 
-// Liste des produits
 $products = $pdo->query("SELECT * FROM products")->fetchAll();
 ?>
 <!DOCTYPE html>
