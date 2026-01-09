@@ -14,7 +14,7 @@ $products = $pdo->query("SELECT * FROM products")->fetchAll();
 <div class="product-grid">
   <?php foreach ($products as $product) : ?>
     <div class="product-card">
-      <img src="images/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['nom']) ?>">
+      <img src="/images/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['nom']) ?>">
       <h3><?= htmlspecialchars($product['nom']) ?></h3>
       <p><?= htmlspecialchars($product['prix']) ?>€</p>
       <form method="POST" action="panier_action.php">

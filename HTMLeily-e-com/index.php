@@ -61,7 +61,7 @@
 
   
   <section class="promo">
-    <img src="images/banner.png" alt="Nouvelle Collection">
+    <img src="/images/banner.png" alt="Nouvelle Collection">
       <div class="promo-text">
         <h1> Nouvelle Collection Automne 2025🍂 </h1>
         <p>Des couleurs chaudes, des tissues techniaue et du style - pour performer avec classe. </p>
@@ -81,7 +81,7 @@
       foreach ($products as $product):
     ?>
       <div class="product-card">
-        <img src="images/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['nom']) ?>">
+        <img src="/images/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['nom']) ?>">
         <h3><?= htmlspecialchars($product['nom']) ?></h3>
         <p class="price"><?= htmlspecialchars($product['prix']) ?>€</p>
         <form method="POST" action="panier_action.php">
